@@ -45,7 +45,8 @@ LATESTARTSERVICE=false
 
 print_modname() {
   ui_print "******************************* "
-  ui_print "Redmi Note 8 Pro (begonia) Dual Speaker SoundMod (by Kinetix)"
+  ui_print "Redmi Note 8 Pro (begonia) Dual Speaker SoundMod"
+  ui_print "Kinetix-Lee@xda-developers / Kinetix@Coolapk"
   ui_print "******************************* "
 
 }
