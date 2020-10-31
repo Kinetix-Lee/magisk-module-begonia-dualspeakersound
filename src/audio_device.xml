@@ -9,10 +9,16 @@
         <!--headphone output-->
         <path name="headphone_output" value="turnon">
             <kctl name="DAC In Mux" value="Normal Path" />
+            <!-- [Start][Module] Use receiver for audio playback -->
+            <kctl name="RCV Mux" value="Audio Playback" />
+            <!-- [End][Module] Use receiver for audio playback -->
             <kctl name="HPL Mux" value="Audio Playback" />
             <kctl name="HPR Mux" value="Audio Playback" />
         </path>
         <path name="headphone_output" value="turnoff">
+            <!-- [Start][Module] Use receiver for audio playback -->
+            <kctl name="RCV Mux" value="Open" />
+            <!-- [End][Module] Use receiver for audio playback -->
             <kctl name="HPL Mux" value="Open" />
             <kctl name="HPR Mux" value="Open" />
         </path>
@@ -39,11 +45,15 @@
        <!--speaker output-->
         <path name="speaker_output" value="turnon">
             <kctl name="DAC In Mux" value="Normal Path" />
+            <!-- [Start][Module] Use receiver for audio playback -->
             <kctl name="RCV Mux" value="Playback" />
+            <!-- [End][Module] Use receiver for audio playback -->
             <kctl name="LOL Mux" value="Playback" />
         </path>
         <path name="speaker_output" value="turnoff">
+            <!-- [Start][Module] Use receiver for audio playback -->
             <kctl name="RCV Mux" value="Open" />
+            <!-- [End][Module] Use receiver for audio playback -->
             <kctl name="LOL Mux" value="Open" />
         </path>
         <!--headhpone_speaker output-->
@@ -51,11 +61,17 @@
             <kctl name="DAC In Mux" value="Normal Path" />
             <kctl name="HPL Mux" value="Audio Playback" />
             <kctl name="HPR Mux" value="Audio Playback" />
+            <!-- [Start][Module] Use receiver for audio playback -->
+            <kctl name="RCV Mux" value="Audio Playback" />
+            <!-- [End][Module] Use receiver for audio playback -->
             <kctl name="LOL Mux" value="Playback" />
         </path>
         <path name="headphoneSpeaker_output" value="turnoff">
             <kctl name="HPL Mux" value="Open" />
             <kctl name="HPR Mux" value="Open" />
+            <!-- [Start][Module] Use receiver for audio playback -->
+            <kctl name="RCV Mux" value="Open" />
+            <!-- [End][Module] Use receiver for audio playback -->
             <kctl name="LOL Mux" value="Open" />
         </path>
         <!--external_speaker output-->
