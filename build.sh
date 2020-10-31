@@ -11,5 +11,7 @@ if [ -d ./build/magisk-module-begonia-dualspeakersound.zip ]; then
   rm ./build/magisk-module-begonia-dualspeakersound.zip
 fi
 
-zip -v -r ./build/magisk-module-begonia-dualspeakersound.zip ./build/template/*
+cd ./build/template
+zip -v -r ../magisk-module-begonia-dualspeakersound.zip ./*
+cd ../../
 rm ./build/template -rf
