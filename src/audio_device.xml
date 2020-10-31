@@ -39,9 +39,11 @@
        <!--speaker output-->
         <path name="speaker_output" value="turnon">
             <kctl name="DAC In Mux" value="Normal Path" />
+            <kctl name="RCV Mux" value="Playback" />
             <kctl name="LOL Mux" value="Playback" />
         </path>
         <path name="speaker_output" value="turnoff">
+            <kctl name="RCV Mux" value="Open" />
             <kctl name="LOL Mux" value="Open" />
         </path>
         <!--headhpone_speaker output-->
