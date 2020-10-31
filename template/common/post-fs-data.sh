@@ -1,7 +1,8 @@
 #!/system/bin/sh
-# Please don't hardcode /magisk/modname/... ; instead, please use $MODDIR/...
-# This will make your scripts compatible even if Magisk change its mount point in the future
+# 请不要硬编码/magisk/modname/...;相反，请使用$MODDIR/...
+# 这将使您的脚本兼容，即使Magisk以后改变挂载点
 MODDIR=${0%/*}
 
-# This script will be executed in post-fs-data mode
-# More info in the main Magisk thread
+# 此脚本将在post-fs-data模式下执行
+
+

@@ -1,7 +1,7 @@
 ##########################################################################################
 #
 # Magisk Module Template Config Script
-# by topjohnwu
+# by TheBestLuke
 #
 ##########################################################################################
 ##########################################################################################
@@ -22,27 +22,32 @@
 
 # Set to true if you need to enable Magic Mount
 # Most mods would like it to be enabled
-AUTOMOUNT=true
+SKIPMOUNT=false
+#是否安装模块后自动关闭，改为faslse，安装后不会自动勾选启用
 
 # Set to true if you need to load system.prop
 PROPFILE=false
+#是否使用common/system.prop文件
 
 # Set to true if you need post-fs-data script
 POSTFSDATA=false
+#是否使用post-fs-data脚本执行文件
 
 # Set to true if you need late_start service script
 LATESTARTSERVICE=false
+#是否在开机时候允许允许common/service.sh中脚本
 
 ##########################################################################################
 # Installation Message
 ##########################################################################################
 
-# Set what you want to show when installing your mod
+# 在安装模块时显示什么内容
 
 print_modname() {
-  ui_print "*******************************"
+  ui_print "******************************* "
   ui_print "Redmi Note 8 Pro (begonia) Dual Speaker SoundMod (by Kinetix)"
-  ui_print "*******************************"
+  ui_print "******************************* "
+
 }
 
 ##########################################################################################
@@ -57,11 +62,20 @@ print_modname() {
 REPLACE="
 /system/vendor/etc/audio_device.xml
 "
+#添加您要修改的的APP/文件夹目录
+#例如：修复状态栏，找到状态栏目录为  /system/priv-app/MiuiSystemUI/MiuiSystemUI.apk     
+#转化加入:/system/priv-app/MiuiSystemUI
+#（可以搭配高级设置获取APP目录）
 
 ##########################################################################################
 # Permissions
 ##########################################################################################
-
+# 释放文件，普通shell命令
+on_install() {
+  ui_print "- Repacking Files"
+  unzip -o "$ZIPFILE" 'system/*' -d $MODPATH >&2
+}
+# 这里的意思是将模块里的/system整个内容覆盖到手机内的/system
 set_permissions() {
   # Only some special files require specific permissions
   # The default permissions should be good enough for most cases
@@ -78,7 +92,8 @@ set_permissions() {
 
   # The following is default permissions, DO NOT remove
   set_perm_recursive  $MODPATH  0  0  0755  0644
-  set_perm  $MODPATH/system/vendor/etc/audio_device.xml       0       0       0644
+  
+  #设置权限，基本不要去动
 }
 
 ##########################################################################################
