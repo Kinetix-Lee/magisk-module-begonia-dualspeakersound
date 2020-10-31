@@ -1,17 +1,24 @@
 #!/bin/bash
 
-if [ ! -d build ]; then
+if ! test build; then
   mkdir build
+else
+  ls ./build/
+  if test ./build/magisk-module-begonia-dualspeakersound.zip; then
+    echo "Removing old build..."
+    rm ./build/magisk-module-begonia-dualspeakersound.zip
+  fi
 fi
 
-cp -r ./template ./build/template
-cp ./src/audio_device.xml ./build/template/audio_device.xml
-
-if [ -d ./build/magisk-module-begonia-dualspeakersound.zip ]; then
-  rm ./build/magisk-module-begonia-dualspeakersound.zip
-fi
+cp -r ./template ./build/
+cp ./src/audio_device.xml ./build/template/system/vendor/etc/audio_device.xml
 
 cd ./build/template
-zip -v -r ../magisk-module-begonia-dualspeakersound.zip ./*
+echo "Making Magisk module..."
+echo ""
+zip -r9T ../magisk-module-begonia-dualspeakersound.zip ./*
 cd ../../
-rm ./build/template -rf
+rm -rf ./build/template
+
+echo ""
+echo "Everything is done. Flash build/magisk-module-begonia-dualspeakersound.zip with Magisk v20+. "
